@@ -80,14 +80,13 @@ a {
     top:106px;
     left: 102px;
     cursor: pointer;
+    display: block;
 }
 
 .icone-file:hover, 
 .icone-file:active {
     color: white;
     opacity: 0.5;
-    display: block;
-    
 }
 
 .fontawesome-file {
