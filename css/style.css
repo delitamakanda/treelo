@@ -1,0 +1,213 @@
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+html,
+body {
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100%
+}
+
+body {
+    font-family: 'Helvetica' sans-serif;
+    font-size: 15px;
+    color: black;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+}
+.container {
+    background-color: white;
+    background-image: url(../images/tulips.jpg);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.header-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    opacity: 0.8;
+    width: 100%;
+    padding: .2em 0 .2em 1.1em;
+}
+
+.header-bar nav {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+.header-bar span, .header-bar nav a:first-child {
+    font-weight: bold;
+}
+
+.header-bar nav a {
+    margin-right: .6em;
+}
+
+.header-bar nav a:last-child {
+    margin-right: 0;
+}
+
+.header-bar span.zocial-appstore {
+    font-size: 16px;
+}
+
+.icone-file {
+    position: absolute;
+    top:106px;
+    left: 102px;
+    cursor: pointer;
+}
+
+.icone-file:hover, 
+.icone-file:active {
+    color: white;
+    opacity: 0.5;
+    display: block;
+    
+}
+
+.fontawesome-file {
+    font-size: 48px;
+    color: #fff;
+}
+
+span.file-text {
+     font-size: 14px;
+    position:absolute;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 1px #333333;
+    left: -30px;
+    width: 90px;
+    height: auto;
+    cursor: pointer;
+}
+
+.app {
+    width: 768px;
+    height: 624px;
+    position: absolute;
+    top: 63px;
+    left: 144px;
+    box-shadow: 0 0 20px 0 #444;
+    border-radius: 6px;
+    transition: width 450ms ease;
+    -webkit-transition: width 450ms ease;
+}
+
+.elargie {
+    width: 1024px;
+    transition: width 450ms ease;
+    -webkit-transition: width 450ms ease;
+}
+
+.app .titre-app {
+    width: inherit;
+    height: 23px;
+    background-color: #EEE;
+    opacity: 0.9;
+    cursor: move;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.app .contenu-app {
+    background-color: white;
+    width: inherit;
+    height: inherit;
+    padding: 3em 0;
+    font-family: 'Courier New', monospace;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.contenu-app #contenu-titre {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.contenu-app #contenu-texte {
+    font-size: 12px;
+    padding-top: 1.5em;
+}
+
+ul {
+    margin: 12px 0;
+    padding: 0;
+}
+
+ul li {
+    margin-left: 23px;
+    margin-bottom: 12px;
+}
+
+.contenu-app #contenu-titre, #contenu-texte{
+    padding: 0 23px 0 23px;
+}
+
+.titre-app #txt-saved {
+    float: right;
+    margin: 4px 6px 0 0;
+    color: #ccc;
+}
+
+.titre-app #titre {
+    float: left;
+    color: #555;
+    margin: 4px 0 0 265px
+}
+
+.titre-app #btn-rouge, #btn-orange, #btn-vert {
+    width: 14px;
+    height: 14px;
+    border-radius: 33px;
+    float: left;
+    margin: 4px 0 0 12px;
+    cursor: pointer;
+}
+
+.titre-app #btn-rouge {
+    background-color: red;
+}
+
+.titre-app #btn-orange {
+    background-color: orange;
+}
+
+.titre-app #btn-vert {
+    background-color: green;
+}
+
+
+.titre-app #btn-rouge:hover {
+    background-color: darkred;
+}
+.titre-app #btn-orange:hover {
+    background-color: darkorange;
+}
+.titre-app #btn-vert:hover {
+    background-color: darkgreen;
+}
+
