@@ -20,7 +20,7 @@ body {
 }
 
 body {
-    font-family: "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica","Arial", Helvetica, Arial, sans-serif;
     font-size: 15px;
     color: black;
     overflow: hidden;
