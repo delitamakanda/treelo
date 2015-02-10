@@ -1,5 +1,6 @@
 @import url(http://weloveiconfonts.com/api/?family=zocial);
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@font-face {font-family: 'Helvetica'; src:local('Helvetica');}
 
 /* zocial */
 [class*="zocial-"]:before {
@@ -16,7 +17,8 @@ body {
     margin:0;
     padding:0;
     width: 100%;
-    height: 100%
+    height: 100%;
+    text-rendering: optimizeSpeed !important;
 }
 
 body {
