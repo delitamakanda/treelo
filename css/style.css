@@ -93,15 +93,16 @@ a {
 .fontawesome-file {
     font-size: 48px;
     color: #fff;
+    text-align: center;
 }
 
 span.file-text {
      font-size: 14px;
-    position:absolute;
+    /*position:absolute;*/
     color: white;
     text-align: center;
     text-shadow: 0 1px 1px #333333;
-    left: -30px;
+    margin-left: -24px;
     width: 90px;
     height: auto;
     cursor: pointer;
