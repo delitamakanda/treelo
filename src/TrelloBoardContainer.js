@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TrelloBoard from './TrelloBoard';
 import 'whatwg-fetch';
 import update from 'react-addons-update';
+import { throttle } from './utils';
 import 'babel-polyfill';
 
 const API_URL = 'http://kanbanapi.pro-react.com';
@@ -16,6 +17,9 @@ class TrelloBoardContainer extends Component {
         this.state = {
             cards: []
         }
+
+        this.updateCardStatus = throttle(this.updateCardStatus.bind(this));
+        this.updateCardPosition = throttle(this.updateCardPosition.bind(this), 500);
     }
 
     componentDidMount() {
@@ -168,6 +172,34 @@ class TrelloBoardContainer extends Component {
         }
     }
 
+    persistCardDrag(cardId, status) {
+        let cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
+
+        let card = this.state.cards[cardIndex];
+
+        fetch(`${API_URL}/cards/${cardId}`, {
+            method: 'put',
+            headers: API_HEADERS,
+            body: JSON.stringify({status: card.status, row_order_position: cardIndex})
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('server not ok', error)
+            }
+        })
+        .catch((error) => {
+            console.error('fetch error:', error);
+            this.setState(update(this.state, {
+                cards: {
+                    [cardIndex]: {
+                        status: { $set: status }
+                    }
+                }
+            }));
+        });
+
+    }
+
     render() {
         return (
             <TrelloBoard cards={this.state.cards}
@@ -176,8 +208,9 @@ class TrelloBoardContainer extends Component {
                             delete: this.deleteTask.bind(this),
                             add: this.addTask.bind(this)}}
                             cardCallbacks={{
-                                updateStatus: this.updateCardStatus.bind(this),
-                                updatePosition: this.updateCardPosition.bind(this)
+                                updateStatus: this.updateCardStatus,
+                                updatePosition: this.updateCardPosition,
+                                persistCardDrag: this.persistCardDrag.bind(this)
                             }} />
         )
     }
