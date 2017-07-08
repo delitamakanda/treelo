@@ -10,6 +10,7 @@ let cardsList = [
         title: "Always stay update",
         description: "i want to be *stay update*",
         status: "in-progress",
+        color: "#bd8d31",
         tasks: []
     },
     {
@@ -17,6 +18,7 @@ let cardsList = [
         title: "Write some code",
         description: "Code anytime everywhere",
         status: "todo",
+        color: "#3a7e28",
         tasks: [
             {
                 id: 1,
