@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import CheckList from './CheckList';
 import marked from 'marked';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { DragSource } from 'react-dnd';
+import constants from './constants';
 
 let titlePropTypes = (props, propName, componentName) => {
     if (props[propName]) {
@@ -13,6 +15,20 @@ let titlePropTypes = (props, propName, componentName) => {
             );
         }
     }
+};
+
+const cardDragSpec = {
+    beginDrag(props) {
+        return {
+            id: props.id
+        };
+    }
+}
+
+let collectDrag = (connect, monitor) => {
+    return {
+        connectDragSource: connect.dragSource()
+    };
 };
 
 class Card extends Component {
@@ -28,6 +44,7 @@ class Card extends Component {
     }
 
     render() {
+        const { connectDragSource } = this.props;
         let sideColor = {
             position: 'absolute',
             zIndex: -1,
@@ -52,7 +69,7 @@ class Card extends Component {
             );
         };
 
-        return (
+        return connectDragSource(
             <div className="card">
                 <div style={sideColor} />
                 <div className={this.state.showDetails? "card__title card__title--is-open": "card__title"} onClick={this.toggleDetails.bind(this)}>{this.props.title}</div>
@@ -73,6 +90,8 @@ Card.propTypes = {
     color: PropTypes.string,
     tasks: PropTypes.array,
     taskCallbacks: PropTypes.object,
+    cardCallbacks: PropTypes.object,
+    connectDragSource: PropTypes.func.isRequired,
 }
 
-export default Card;
+export default DragSource(constants.CARD, cardDragSpec, collectDrag)(Card);
