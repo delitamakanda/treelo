@@ -8,7 +8,7 @@ let cardsList = [
     {
         id: 1,
         title: "Always stay update",
-        description: "i want to be stay update",
+        description: "i want to be *stay update*",
         status: "in-progress",
         tasks: []
     },
