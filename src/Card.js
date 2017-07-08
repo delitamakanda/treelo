@@ -5,9 +5,9 @@ class Card extends Component {
 
     render() {
         return (
-            <div>
-                <div>{this.props.title}</div>
-                <div>{this.props.description}</div>
+            <div className="card">
+                <div className="card__title">{this.props.title}</div>
+                <div className="card__details">{this.props.description}</div>
                 <CheckList cardId={this.props.id} tasks={this.props.tasks} />
             </div>
         );

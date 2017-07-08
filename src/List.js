@@ -12,7 +12,7 @@ class List extends Component {
                     tasks={card.tasks} />
         });
         return (
-            <div>
+            <div className="list">
                 <h1>{this.props.title}</h1>
                 {cards}
             </div>
