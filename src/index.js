@@ -37,6 +37,14 @@ let cardsList = [
             }
         ]
     },
+    {
+        id: 3,
+        title: "New card very very very very long to show the Proptypes validation.",
+        description: "Text Example",
+        status: "done",
+        color: "#bbdd77",
+        tasks: []
+    },
 ];
 
 ReactDOM.render(<TrelloBoard cards={cardsList} />, document.getElementById('root'));

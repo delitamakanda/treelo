@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import List from './List';
 
 class TrelloBoard extends Component {
@@ -18,6 +19,10 @@ class TrelloBoard extends Component {
             </div>
         );
     }
+}
+
+TrelloBoard.propTypes = {
+    cards: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default TrelloBoard;
