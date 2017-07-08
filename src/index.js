@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import GroceryList from './GroceryList';
-import TrelloBoard from './TrelloBoard';
+import TrelloBoardContainer from './TrelloBoardContainer';
 
+/*
 let cardsList = [
     {
         id: 1,
@@ -46,6 +47,7 @@ let cardsList = [
         tasks: []
     },
 ];
+*/
 
-ReactDOM.render(<TrelloBoard cards={cardsList} />, document.getElementById('root'));
+ReactDOM.render(<TrelloBoardContainer />, document.getElementById('root'));
 
