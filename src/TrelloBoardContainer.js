@@ -37,6 +37,65 @@ class TrelloBoardContainer extends Component {
         })
     }
 
+    addCard(card) {
+        let prevState = this.state;
+        
+        if (card.id === null ) {
+            let card = Object.assign({}, card, {id: Date.now()});
+        }
+
+        let nextState = update(this.state.cards, {$push: [card]});
+
+        this.setState({cards: nextState});
+
+        fetch(`${API_URL}/cards`, {
+            method: 'POST',
+            headers: API_HEADERS,
+            body: JSON.stringify(card)
+        })
+        .then((response) => {
+            if (response.ok) {
+                return response.json()
+            } else {
+                throw new Error("Server response not okay")
+            }
+        })
+        .then((responseData) => {
+            card.id = responseData.id
+            this.setState({cards: nextState});
+        })
+        .catch((error) => {
+            this.setState(prevState);
+        });
+    }
+
+    updateCard(card) {
+        let prevState = this.state;
+
+        let cardIndex = this.state.cards.findIndex((c) => c.id == card.id);
+
+        let nextState = update(this.state.cards, {
+            [cardIndex]: {$set: card}
+        });
+
+        this.setState({cards: nextState});
+
+        fetch(`${API_URL}/cards/${card.id}`, {
+            method: 'PUT',
+            headers: API_HEADERS,
+            body: JSON.stringify(card)
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Server response not okay")
+            }
+        })
+        .catch((error) => {
+            console.log('fetch error', error)
+            this.setState(prevState);
+        });
+    }
+
     addTask(cardId, taskName) {
 
         let prevState = this.state;
@@ -201,7 +260,24 @@ class TrelloBoardContainer extends Component {
     }
 
     render() {
-        return (
+        let TrelloBoard = this.props.children && React.cloneElement(this.props.children, {
+            cards: this.state.cards,
+            taskCallbacks: {
+                toggle: this.toggleTask.bind(this),
+                delete: this.deleteTask.bind(this),
+                add: this.addTask.bind(this)
+            },
+            cardCallbacks: {
+                addCard: this.addCard.bind(this),
+                updateCard: this.updateCard.bind(this),
+                updateStatus: this.updateCardStatus.bind(this),
+                updatePosition: this.updateCardPosition.bind(this),
+                persistCardDrag: this.persistCardDrag.bind(this)
+            }
+        });
+        return TrelloBoard;
+
+        {/*return (
             <TrelloBoard cards={this.state.cards}
                         taskCallbacks={{
                             toggle: this.toggleTask.bind(this),
@@ -212,7 +288,7 @@ class TrelloBoardContainer extends Component {
                                 updatePosition: this.updateCardPosition,
                                 persistCardDrag: this.persistCardDrag.bind(this)
                             }} />
-        )
+        )*/}
     }
 }
 
