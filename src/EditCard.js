@@ -1,7 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CardForm from './CardForm';
 
 class EditCard extends Component {
+
 
     componentWillMount() {
         let card = this.props.cards.find((card)=> card.id == this.props.params.card_id);
@@ -29,14 +31,13 @@ class EditCard extends Component {
                         buttonLabel="Edit Card"
                         handleChange={this.handleChange.bind(this)}
                         handleSubmit={this.handleSubmit.bind(this)}
-                        handleClose={this.handleClose.bind(this)}
-            />
+                        handleClose={this.handleClose.bind(this)} />
         );
     }
 }
 
 EditCard.propTypes = {
-    cardCallbacks: PropTypes.object,
-}
+    cardCallbacks: PropTypes.object
+};
 
 export default EditCard;

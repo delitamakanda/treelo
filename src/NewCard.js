@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CardForm from './CardForm';
 
 class NewCard extends Component {
@@ -35,14 +36,13 @@ class NewCard extends Component {
                         buttonLabel="Create Card"
                         handleChange={this.handleChange.bind(this)}
                         handleSubmit={this.handleSubmit.bind(this)}
-                        handleClose={this.handleClose.bind(this)}
-            />
+                        handleClose={this.handleClose.bind(this)} />
         );
     }
 }
 
 NewCard.propTypes = {
     cardCallbacks: PropTypes.object,
-}
+};
 
 export default NewCard;

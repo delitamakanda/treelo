@@ -9,6 +9,8 @@ import TrelloBoard from './TrelloBoard';
 import EditCard from './EditCard';
 import NewCard from './NewCard';
 
+const history = createBrowserHistory();
+
 /*
 let cardsList = [
     {
@@ -57,7 +59,7 @@ let cardsList = [
 ReactDOM.render(<TrelloBoardContainer />, document.getElementById('root'));*/
 
 render((
-    <Router history={createBrowserHistory()}>
+    <Router history={ history }>
         <Route component={TrelloBoardContainer}>
             <Route path="/" component={TrelloBoard}>
                 <Route path="new" component={NewCard} />

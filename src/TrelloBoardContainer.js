@@ -44,7 +44,7 @@ class TrelloBoardContainer extends Component {
             let card = Object.assign({}, card, {id: Date.now()});
         }
 
-        let nextState = update(this.state.cards, {$push: [card]});
+        let nextState = update(this.state.cards, { $push: [card] });
 
         this.setState({cards: nextState});
 
@@ -75,7 +75,7 @@ class TrelloBoardContainer extends Component {
         let cardIndex = this.state.cards.findIndex((c) => c.id == card.id);
 
         let nextState = update(this.state.cards, {
-            [cardIndex]: {$set: card}
+            [cardIndex]: { $set: card }
         });
 
         this.setState({cards: nextState});
@@ -271,7 +271,7 @@ class TrelloBoardContainer extends Component {
                 addCard: this.addCard.bind(this),
                 updateCard: this.updateCard.bind(this),
                 updateStatus: this.updateCardStatus.bind(this),
-                updatePosition: this.updateCardPosition.bind(this),
+                updatePosition: throttle(this.updateCardPosition.bind(this), 500),
                 persistCardDrag: this.persistCardDrag.bind(this)
             }
         });
