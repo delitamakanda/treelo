@@ -1,2 +1,2 @@
-# OSX_Yosemite
+# treelo
 trello-like
