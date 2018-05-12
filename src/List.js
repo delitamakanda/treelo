@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { DropTarget } from 'react-dnd';
-import PropTypes from 'prop-types';
 import Card from './Card';
 import constants from './constants';
 

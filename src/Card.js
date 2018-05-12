@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import CheckList from './CheckList';
 import marked from 'marked';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -7,7 +6,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import constants from './constants';
 import { Link } from 'react-router';
 
-let titlePropTypes = (props, propName, componentName) => {
+let titlePropType = (props, propName, componentName) => {
     if (props[propName]) {
         let value = props[propName];
         if (typeof value !== 'string' || value.length > 80) {
@@ -80,8 +79,8 @@ class Card extends Component {
             cardDetails = (
                 <div className="card__details">
                     <span dangerouslySetInnerHTML={{__html:marked(this.props.description)}} />
-                <CheckList 
-                        cardId={this.props.id} 
+                <CheckList
+                        cardId={this.props.id}
                         tasks={this.props.tasks}
                         taskCallbacks={this.props.taskCallbacks} />
                 </div>
@@ -105,10 +104,10 @@ class Card extends Component {
 
 Card.propTypes = {
     id: PropTypes.number,
-    title: titlePropTypes,
+    title: titlePropType,
     description: PropTypes.string,
     color: PropTypes.string,
-    tasks: PropTypes.array,
+    tasks: PropTypes.arrayOf(PropTypes.object),
     taskCallbacks: PropTypes.object,
     cardCallbacks: PropTypes.object,
     connectDragSource: PropTypes.func.isRequired,

@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/delitamakanda/OSX_Yosemite.git"
+    "url": "git+https://github.com/delitamakanda/treelo.git"
   },
   "keywords": [
     "reactjs",
@@ -22,9 +22,9 @@
   "author": "Délita Makanda",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/delitamakanda/OSX_Yosemite/issues"
+    "url": "https://github.com/delitamakanda/treelo/issues"
   },
-  "homepage": "https://github.com/delitamakanda/OSX_Yosemite#readme",
+  "homepage": "https://github.com/delitamakanda/treelo#readme",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
@@ -42,10 +42,9 @@
   },
   "dependencies": {
     "history": "^1.17.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
+    "react": "^0.14.9",
     "react-addons-css-transition-group": "^15.6.0",
-    "react-dom": "^15.6.1",
+    "react-dom": "^0.14.9",
     "react-router": "^1.0.3"
   }
 }

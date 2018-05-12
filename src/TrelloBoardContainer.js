@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import TrelloBoard from './TrelloBoard';
-import 'whatwg-fetch';
 import update from 'react-addons-update';
 import { throttle } from './utils';
 import 'babel-polyfill';
+import 'whatwg-fetch';
 
 const API_URL = 'http://kanbanapi.pro-react.com';
 const API_HEADERS = {
@@ -39,7 +39,7 @@ class TrelloBoardContainer extends Component {
 
     addCard(card) {
         let prevState = this.state;
-        
+
         if (card.id === null ) {
             let card = Object.assign({}, card, {id: Date.now()});
         }
@@ -200,7 +200,7 @@ class TrelloBoardContainer extends Component {
         let cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
 
         let card = this.state.cards[cardIndex];
-        
+
         if (card.status !== listId) {
             this.setState(update(this.state, {
                 cards: {
@@ -260,7 +260,7 @@ class TrelloBoardContainer extends Component {
     }
 
     render() {
-        let TrelloBoard = this.props.children && React.cloneElement(this.props.children, {
+        let trelloBoard = this.props.children && React.cloneElement(this.props.children, {
             cards: this.state.cards,
             taskCallbacks: {
                 toggle: this.toggleTask.bind(this),
@@ -271,11 +271,11 @@ class TrelloBoardContainer extends Component {
                 addCard: this.addCard.bind(this),
                 updateCard: this.updateCard.bind(this),
                 updateStatus: this.updateCardStatus.bind(this),
-                updatePosition: throttle(this.updateCardPosition.bind(this), 500),
+                updatePosition: throttle(this.updateCardPosition.bind(this),500),
                 persistCardDrag: this.persistCardDrag.bind(this)
             }
         });
-        return TrelloBoard;
+        return trelloBoard;
 
         {/*return (
             <TrelloBoard cards={this.state.cards}

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import CardForm from './CardForm';
 
 class EditCard extends Component {
@@ -15,7 +14,6 @@ class EditCard extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefaut();
         this.props.cardCallbacks.updateCard(this.state);
         this.props.history.pushState(null,'/');
     }
