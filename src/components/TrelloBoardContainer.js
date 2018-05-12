@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TrelloBoard from './TrelloBoard';
 import update from 'react-addons-update';
-import { throttle } from './utils';
+import { throttle } from '../utils';
 import 'babel-polyfill';
 import 'whatwg-fetch';
 
