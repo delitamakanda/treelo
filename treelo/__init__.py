@@ -19,3 +19,8 @@ def create_app(object_name):
     app.register_blueprint(api_blueprint)
 
     return app
+
+
+if __name__ == '__main__':
+    app = app = create_app('treelo.config.DevConfig')
+    app.run()
