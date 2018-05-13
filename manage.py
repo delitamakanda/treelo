@@ -1,8 +1,12 @@
+import os
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
+from treelo import create_app
+from treelo.models import db, Card, Task
 
-from main import app, db
-from models import Card, Task
+
+env = os.environ.get('TREELO_ENV', 'dev')
+app = create_app('treelo.config.%sConfig' % env.capitalize())
 
 migrate = Migrate(app, db)
 
