@@ -24,6 +24,23 @@ card_post_parser.add_argument(
     help="Description is required"
 )
 
+card_post_parser.add_argument(
+    'color',
+    type=str,
+    required=False
+)
+
+card_post_parser.add_argument(
+    'status',
+    type=str,
+    required=False
+)
+
+card_post_parser.add_argument(
+    'row_order',
+    type=int,
+    required=False
+)
 
 card_post_parser.add_argument(
     'tasks',

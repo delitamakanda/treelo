@@ -56,6 +56,9 @@ class CardApi(Resource):
             new_card = Card(args['title'])
 
             new_card.description = args['description']
+            new_card.color = args['color']
+            new_card.status = args['status']
+            new_card.row_order = args['row_order']
 
             if args['tasks']:
                 for item in args['tasks']:
