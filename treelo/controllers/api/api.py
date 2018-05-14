@@ -36,7 +36,7 @@ class CardApi(Resource):
             if not card:
                 abort(404)
 
-            return post
+            return card
         else:
             args = card_get_parser.parse_args()
             page = args['page'] or 1
