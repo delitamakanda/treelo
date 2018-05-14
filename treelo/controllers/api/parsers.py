@@ -11,6 +11,13 @@ card_get_parser.add_argument(
 
 card_post_parser = reqparse.RequestParser()
 card_post_parser.add_argument(
+    'id',
+    type=int,
+    required=True,
+    help="Id is required"
+)
+
+card_post_parser.add_argument(
     'title',
     type=str,
     required=True,

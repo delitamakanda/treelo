@@ -53,8 +53,9 @@ class CardApi(Resource):
         else:
             args = card_post_parser.parse_args(strict=True)
 
-            new_card = Card(args['title'])
+            new_card = Card(args['id'])
 
+            new_card.title = args['title']
             new_card.description = args['description']
             new_card.color = args['color']
             new_card.status = args['status']
@@ -72,13 +73,13 @@ class CardApi(Resource):
             db.session.add(new_card)
             db.session.commit()
             return new_card.id, 201
-        
+
     def put(self, card_id=None):
         if card_id:
             pass
         else:
             abort(404)
-            
-            
+
+
     def delete(self, card_id=None):
         pass
