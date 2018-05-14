@@ -47,3 +47,7 @@ card_post_parser.add_argument(
     type=str,
     action='append'
 )
+
+card_put_parser = reqparse.RequestParser()
+
+card_delete_parser = reqparse.RequestParser()
