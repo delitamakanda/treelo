@@ -5,10 +5,11 @@ import { throttle } from '../utils';
 import 'babel-polyfill';
 import 'whatwg-fetch';
 
-const API_URL = 'http://kanbanapi.pro-react.com';
+const API_URL = 'http://localhost:5000/api';
 const API_HEADERS = {
     'Content-Type': 'application/json',
-    Authorization: 'connard'
+    Authorization: 'connard',
+    mode: 'opaque'
 };
 
 class TrelloBoardContainer extends Component {
