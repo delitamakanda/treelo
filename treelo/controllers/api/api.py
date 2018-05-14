@@ -3,7 +3,7 @@ from flask import abort
 from flask_restful import Resource, fields, marshal_with
 from treelo.models import db, Card, Task
 from .fields import HTMLField
-from .parsers import card_get_parser, card_post_parser
+from .parsers import card_get_parser, card_post_parser, card_put_parser, card_delete_parser
 
 task_fields = {
     'id': fields.Integer(),
@@ -72,3 +72,13 @@ class CardApi(Resource):
             db.session.add(new_card)
             db.session.commit()
             return new_card.id, 201
+        
+    def put(self, card_id=None):
+        if card_id:
+            pass
+        else:
+            abort(404)
+            
+            
+    def delete(self, card_id=None):
+        pass
