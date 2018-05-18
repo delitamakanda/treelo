@@ -56,5 +56,49 @@ card_post_parser.add_argument(
 )
 
 card_put_parser = reqparse.RequestParser()
+card_put_parser.add_argument(
+    'id',
+    type=int,
+    required=True,
+    help="Id is required"
+)
+
+card_put_parser.add_argument(
+    'title',
+    type=str,
+    required=True,
+    help="Title is required"
+)
+
+card_put_parser.add_argument(
+    'description',
+    type=str,
+    required=True,
+    help="Description is required"
+)
+
+card_put_parser.add_argument(
+    'color',
+    type=str,
+    required=False
+)
+
+card_put_parser.add_argument(
+    'status',
+    type=str,
+    required=False
+)
+
+card_put_parser.add_argument(
+    'row_order',
+    type=int,
+    required=False
+)
+
+card_put_parser.add_argument(
+    'tasks',
+    type=str,
+    action='append'
+)
 
 card_delete_parser = reqparse.RequestParser()

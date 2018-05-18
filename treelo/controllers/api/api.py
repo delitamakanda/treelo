@@ -75,10 +75,44 @@ class CardApi(Resource):
             return new_card.id, 201
 
     def put(self, card_id=None):
-        if card_id:
-            pass
-        else:
+        if not card_id:
+            abort(400)
+
+        card = Card.query.get(card_id)
+        if not card:
             abort(404)
+
+        args = card_put_parser.parse_args(strict=True)
+
+        if args['title']:
+            card.title = args['title']
+
+        if args['description']:
+            card.description = args['description']
+
+        if args['color']:
+            card.color = args['color']
+
+        if args['status']:
+            card.status = args['status']
+
+        if args['row_order']:
+            card.row_order = args['row_order']
+
+        if args['tasks']:
+            for item in args['tasks']:
+                task = Task.query.filter_by(title=item).first()
+
+                if task:
+                    card.tasks.append(task)
+                else:
+                    new_task = Task(item)
+                    card.tasks.append(new_task)
+
+        db.session.add(card)
+        db.session.commit()
+        return card.id, 201
+
 
 
     def delete(self, card_id=None):
