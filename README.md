@@ -34,3 +34,6 @@ python manage.py db migrate -m "initial migration"
 # apply migrations
 python manage.py db upgrade
 ```
+
+
+[Treelo API](https://documenter.getpostman.com/view/4351489/RW86NBMB#cfdd9ee3-30ac-45a2-864a-cf74f648589b)

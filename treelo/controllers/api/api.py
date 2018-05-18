@@ -116,4 +116,15 @@ class CardApi(Resource):
 
 
     def delete(self, card_id=None):
-        pass
+        if not card_id:
+            abort(400)
+
+        card = Card.query.get(card_id)
+        if not card:
+            abort(404)
+
+        args = card_delete_parser.parse_args(strict=True)
+
+        db.session.delete(card)
+        db.session.commit()
+        return "", 204
