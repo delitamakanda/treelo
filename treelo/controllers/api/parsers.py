@@ -1,5 +1,5 @@
 from flask_restful import reqparse
-import datetime
+from datetime import datetime
 
 card_get_parser = reqparse.RequestParser()
 card_get_parser.add_argument(
@@ -92,6 +92,18 @@ card_put_parser.add_argument(
 card_put_parser.add_argument(
     'row_order',
     type=int,
+    required=False
+)
+
+card_put_parser.add_argument(
+    'created_at',
+    type=str,
+    required=False
+)
+
+card_put_parser.add_argument(
+    'updated_at',
+    type=str,
     required=False
 )
 
