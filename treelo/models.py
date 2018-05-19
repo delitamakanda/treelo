@@ -33,10 +33,8 @@ class Task(db.Model):
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
-    def __init__(self, name, done, card_id):
+    def __init__(self, name):
         self.name = name
-        self.done = done
-        self.card_id = card_id
 
     def __repr__(self):
         return "<Task '{}'>".format(self.name)
