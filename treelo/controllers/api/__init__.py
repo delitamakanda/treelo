@@ -7,4 +7,4 @@ from treelo.models import db, Card, Task
 
 api_blueprint = Blueprint('api', __name__, template_folder=path.join(path.pardir, 'templates', 'api'), url_prefix="/api")
 
-from .api import CardApi
+from .api import CardApi, TaskApi
