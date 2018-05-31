@@ -114,3 +114,11 @@ card_put_parser.add_argument(
 )
 
 card_delete_parser = reqparse.RequestParser()
+
+task_get_parser = reqparse.RequestParser()
+task_get_parser.add_argument(
+    'page',
+    type=int,
+    location=['args', 'headers']
+)
+
