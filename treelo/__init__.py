@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for
 from treelo.models import db
-from treelo.controllers.api import api_blueprint, CardApi
+from treelo.controllers.api import api_blueprint, CardApi, TaskApi
 from treelo.extensions import rest_api, cors_api
 
 def create_app(object_name):
