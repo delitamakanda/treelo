@@ -36,7 +36,7 @@ class TaskApi(Resource):
             card = Card.query.get(card_id)
 
             args = task_post_parser.parse_args(strict=True)
-            
+
             new_task = Task(args['id'])
             new_task.card_id = card.id
             new_task.name = args['name']
@@ -71,7 +71,7 @@ class TaskApi(Resource):
         if not task:
             abort(404)
 
-        args = task_delete_parser.parse_args(strict=False)
+        args = task_delete_parser.parse_args(strict=True)
 
         db.session.delete(task)
         db.session.commit()
