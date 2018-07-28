@@ -2,6 +2,7 @@
   "name": "trello-like",
   "version": "1.0.0",
   "description": "trello like in react js case studies",
+  "proxy": "http://localhost:5000/",
   "main": "index.js",
   "scripts": {
     "test": "jest",
