@@ -110,7 +110,7 @@ card_put_parser.add_argument(
 card_put_parser.add_argument(
     'tasks',
     type=str,
-    action='append'
+    required=False
 )
 
 card_delete_parser = reqparse.RequestParser()
@@ -146,4 +146,4 @@ task_put_parser.add_argument(
     help="Status is required"
 )
 
-task_delelete_parser = reqparse.RequestParser()
+task_delete_parser = reqparse.RequestParser()
