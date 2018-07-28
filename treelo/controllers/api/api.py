@@ -3,7 +3,7 @@ from flask import abort
 from flask_restful import Resource, fields, marshal_with
 from treelo.models import db, Card, Task
 from .fields import HTMLField
-from .parsers import card_get_parser, card_post_parser, card_put_parser, card_delete_parser, task_get_parser
+from .parsers import card_get_parser, card_post_parser, card_put_parser, card_delete_parser, task_get_parser, task_post_parser
 
 task_fields = {
     'id': fields.Integer(),
@@ -29,22 +29,39 @@ card_fields = {
 
 class TaskApi(Resource):
     @marshal_with(task_fields)
-    def get(self, task_id):
-        if task_id:
-            task = Task.query.get(task_id)
-            if not task:
+    def get(self, card_id):
+        if card_id:
+            card = Card.query.get(card_id)
+            if not card:
                 abort(404)
-            return task
-        else:
             args = task_get_parser.parse_args()
             page = args['page'] or 1
-            tasks = Task.query.order_by(
-                Task.created_at.desc()
-            ).paginate(page, 30)
-            
+            tasks = Task.query.filter_by(card_id=card.id).paginate(page, 30)
             return tasks.items
 
-        
+    def post(self, task_id=None):
+        if not task_id:
+            abort(400)
+        else:
+            args = task_post_parser.parse_args(strict=True)
+            new_task = Task(args['id'])
+            new_task.name = args['name']
+            new_task.done = args['done']
+
+            if args['task_id']:
+                for item in args['task_id']:
+                    card = Card.query.filter_by(id=item).first()
+                    if card:
+                        new_task.card_id.append(card)
+                    else:
+                        new_card = Card(item)
+                        new_task.card_id.append(new_card)
+
+            db.session.add(new_task)
+            db.session.commit()
+            return new_task.id, 201
+
+
 class CardApi(Resource):
     @marshal_with(card_fields)
     def get(self, card_id=None):
@@ -62,7 +79,6 @@ class CardApi(Resource):
             ).paginate(page, 30)
 
             return cards.items
-
 
     def post(self, card_id=None):
         if card_id:

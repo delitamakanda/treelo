@@ -12,7 +12,13 @@ def create_app(object_name):
         CardApi,
         '/api/cards',
         '/api/cards/<int:card_id>',
-        endpoint='api'
+        endpoint='cards'
+    )
+    rest_api.add_resource(
+        TaskApi,
+        '/api/cards/<int:card_id>/tasks',
+        '/api/cards/<int:card_id>/tasks/<int:task_id>',
+        endpoint='tasks'
     )
     rest_api.init_app(app)
     cors_api.init_app(app)
