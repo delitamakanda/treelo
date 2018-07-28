@@ -115,21 +115,12 @@ card_put_parser.add_argument(
 
 card_delete_parser = reqparse.RequestParser()
 
-task_get_parser = reqparse.RequestParser()
-
-task_get_parser.add_argument(
-    'page',
-    type=int,
-    location=['args', 'headers']
-)
-
 task_post_parser = reqparse.RequestParser()
-
 task_post_parser.add_argument(
-    'card_id',
+    'id',
     type=int,
     required=True,
-    help="Card Id is required"
+    help="Id is required"
 )
 
 task_post_parser.add_argument(
@@ -145,3 +136,14 @@ task_post_parser.add_argument(
     required=True,
     help="Status is required"
 )
+
+task_put_parser = reqparse.RequestParser()
+
+task_put_parser.add_argument(
+    'done',
+    type=bool,
+    required=True,
+    help="Status is required"
+)
+
+task_delelete_parser = reqparse.RequestParser()
