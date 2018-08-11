@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import TrelloBoard from './TrelloBoard';
 import update from 'react-addons-update';
 import { throttle } from '../utils';
+
+import { Container } from 'flux/utils';
+import CardActionCreators from '../actions/CardActionCreators';
+import CardStore from '../store/CardStore';
+
+//polyfill
 import 'babel-polyfill';
 import 'whatwg-fetch';
 
@@ -15,27 +21,12 @@ const API_HEADERS = {
 class TrelloBoardContainer extends Component {
     constructor() {
         super(...arguments);
-        this.state = {
-            cards: []
-        }
-
         this.updateCardStatus = throttle(this.updateCardStatus.bind(this));
         this.updateCardPosition = throttle(this.updateCardPosition.bind(this), 500);
     }
 
     componentDidMount() {
-        fetch(`${API_URL}/cards`, {headers: API_HEADERS})
-        .then((response) => response.json())
-        .then((responseData) => {
-            this.setState({
-                cards: responseData
-            });
-
-            window.state = this.state;
-        })
-        .catch((error) => {
-            console.log('error fecthing data', error);
-        })
+        CardActionCreators.fetchCards();
     }
 
     addCard(card) {
@@ -293,4 +284,9 @@ class TrelloBoardContainer extends Component {
     }
 }
 
-export default TrelloBoardContainer;
+TrelloBoardContainer.getStores = () => ([CardStore]);
+TrelloBoardContainer.calculateState = (prevState) => ({
+    cards: CardStore.getState()
+});
+
+export default Container.create(TrelloBoardContainer);
