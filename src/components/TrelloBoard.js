@@ -7,32 +7,27 @@ import { Link } from 'react-router';
 class TrelloBoard extends Component {
 
     render() {
-        let cardModal = this.props.children && React.cloneElement(this.props.children, {
-            cards: this.props.cards,
-            cardCallbacks: this.props.cardCallbacks
-        });
         return (
             <div className="app">
                 <Link className="float-button" to="/new">+</Link>
-                <List title='Todo' taskCallbacks={this.props.taskCallbacks} cardCallbacks={this.props.cardCallbacks} cards={
+                <List id='todo' title='Todo' cards={
                     this.props.cards.filter((card)=> card.status === "todo")
                 } />
-                <List title='In Progress' taskCallbacks={this.props.taskCallbacks} cardCallbacks={this.props.cardCallbacks} cards={
+                <List id='in-progress' title='In Progress' cards={
                     this.props.cards.filter((card)=> card.status === "in-progress")
                 } />
-                <List title='Done' taskCallbacks={this.props.taskCallbacks} cardCallbacks={this.props.cardCallbacks} cards={
+                <List id='done' title='Done' cards={
                     this.props.cards.filter((card)=> card.status === "done")
                 } />
-                { cardModal }
+                { this.props.children }
             </div>
         );
     }
 }
 
+
 TrelloBoard.propTypes = {
-    cards: PropTypes.arrayOf(PropTypes.object),
-    taskCallbacks: PropTypes.object,
-    cardCallbacks: PropTypes.object,
+    cards: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default DragDropContext(HTML5Backend)(TrelloBoard);
