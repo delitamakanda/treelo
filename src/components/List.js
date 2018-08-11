@@ -25,7 +25,7 @@ class List extends Component {
         let cards = this.props.cards.map((card) => {
             return <Card key={card.id} {...card} />
         });
-        
+
         return connectDropTarget(
             <div className="list">
                 <h1>{this.props.title}</h1>
@@ -37,8 +37,9 @@ class List extends Component {
 
 
 List.propTypes = {
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    cards: PropTypes.arrayOf(PropTypes.object),
+    cards: PropTypes.arrayOf(React.PropTypes.object),
     connectDropTarget: PropTypes.func.isRequired,
 }
 

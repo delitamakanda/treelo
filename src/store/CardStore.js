@@ -54,7 +54,7 @@ class CardStore extends ReduceStore {
                 cardIndex = this.getCardIndex(action.payload.card.id);
                 return update(this.getState(), {
                     [cardIndex]: {
-                        $splice: action.payload.card
+                        $set: action.payload.card
                     }
                 });
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import CardForm from './CardForm';
-import CardActionCreators from '../actions/CardActionCreators';
 import DraftStore from '../store/DraftStore';
 import { Container } from 'flux/utils';
+import CardActionCreators from '../actions/CardActionCreators';
 
 class NewCard extends Component {
 

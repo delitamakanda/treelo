@@ -38,7 +38,7 @@ class EditCard extends Component {
                         handleChange={this.handleChange.bind(this)}
                         handleSubmit={this.handleSubmit.bind(this)}
                         handleClose={this.handleClose.bind(this)} />
-        );
+        )
     }
 }
 

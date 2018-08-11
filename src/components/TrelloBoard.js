@@ -10,7 +10,7 @@ class TrelloBoard extends Component {
         return (
             <div className="app">
                 <Link className="float-button" to="/new">+</Link>
-                <List id='todo' title='Todo' cards={
+                <List id='todo' title='To Do' cards={
                     this.props.cards.filter((card)=> card.status === "todo")
                 } />
                 <List id='in-progress' title='In Progress' cards={
