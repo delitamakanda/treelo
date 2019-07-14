@@ -25,7 +25,7 @@ class DraftStore extends ReduceStore {
             case constants.CREATE_DRAFT:
                 if (action.payload.card) {
                     return update(this.getState(), {
-                        $set: [action.payload.card]
+                        $set: action.payload.card
                     });
                 } else {
                     return defaultDraft();

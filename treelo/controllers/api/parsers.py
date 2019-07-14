@@ -122,6 +122,13 @@ task_post_parser.add_argument(
 task_put_parser = reqparse.RequestParser()
 
 card_put_parser.add_argument(
+    'id',
+    type=int,
+    required=False,
+    help="Id is required"
+)
+
+card_put_parser.add_argument(
     'title',
     type=str,
     required=False,
@@ -150,6 +157,12 @@ card_put_parser.add_argument(
 card_put_parser.add_argument(
     'row_order',
     type=int,
+    required=False
+)
+
+card_put_parser.add_argument(
+    'created_at',
+    type=str,
     required=False
 )
 
