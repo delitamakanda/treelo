@@ -14,7 +14,6 @@ class CardForm extends Component {
         return(
             <div>
                 <div className="card big">
-                {this.props.draftCard.title}
                     <form onSubmit={this.props.handleSubmit.bind(this)}>
                         <input type='text'
                                 value={this.props.draftCard.title}
