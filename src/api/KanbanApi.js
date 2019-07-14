@@ -36,7 +36,7 @@ let KanbanAPI = {
         return fetch(`${API_URL}/cards/${cardId}`, {
             method: 'put',
             headers: API_HEADERS,
-            body: JSON.stringify({status, row_order_position: index})
+            body: JSON.stringify({status, row_order: index})
         })
     },
 

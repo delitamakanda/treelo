@@ -1,9 +1,9 @@
 import datetime
 from flask import abort
-from flask_restful import Resource, fields, marshal_with
+from flask_restful import Resource, fields, marshal_with, abort
 from treelo.models import db, Card, Task
 from .fields import HTMLField
-from .parsers import card_get_parser, card_post_parser, card_put_parser, card_delete_parser, task_post_parser, task_put_parser, task_delete_parser
+from .parsers import card_get_parser, card_post_parser, card_put_parser, card_delete_parser, task_post_parser, task_put_parser
 
 task_fields = {
     'id': fields.Integer(),
@@ -31,20 +31,20 @@ class TaskApi(Resource):
     @marshal_with(task_fields)
     def post(self, card_id=None):
         if not card_id:
-            abort(404)
+            abort(400)
         else:
             card = Card.query.get(card_id)
-
             args = task_post_parser.parse_args(strict=True)
 
             new_task = Task(args['id'])
+            new_task.id = args['id']
             new_task.card_id = card.id
             new_task.name = args['name']
             new_task.done = args['done']
 
             db.session.add(new_task)
             db.session.commit()
-            return new_task.id, 201
+            return new_task, 201
 
     def put(self, card_id=None, task_id=None):
         if not task_id:
@@ -68,10 +68,9 @@ class TaskApi(Resource):
             abort(400)
 
         task = Task.query.get(task_id)
+
         if not task:
             abort(404)
-
-        args = task_delete_parser.parse_args(strict=True)
 
         db.session.delete(task)
         db.session.commit()

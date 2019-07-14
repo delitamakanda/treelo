@@ -37,7 +37,6 @@ class List extends Component {
 
 
 List.propTypes = {
-    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     cards: PropTypes.arrayOf(React.PropTypes.object),
     connectDropTarget: PropTypes.func.isRequired,
