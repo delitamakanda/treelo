@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node_modules/.bin/webpack-dev-server --progress"
+    "start": "node_modules/.bin/webpack-dev-server --progress",
+    "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
   },
   "repository": {
     "type": "git",
